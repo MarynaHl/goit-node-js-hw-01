@@ -29,7 +29,7 @@ async function getContactById(contactId) {
       (contact) => contact.id === contactId.toString()
     );
 
-    if (index === -1) throw new Error("Such contact was not found".red);
+    if (!index) throw new Error("Such contact was not found".red);
 
     const searchContact = contacts[index];
 
@@ -72,7 +72,7 @@ async function addContact(name, email, phone) {
       (contact) => contact.name === phone.toString()
     );
 
-    if (index !== -1 || index === 0) {
+    if (index) {
       throw new Error(
         "Such contact is already present in your's contacts list!".red
       );
